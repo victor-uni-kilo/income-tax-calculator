@@ -1,0 +1,8 @@
+/* fix Unknown at rules by ignoring them; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.test {
+  @apply text-3xl font-bold underline;
+}
