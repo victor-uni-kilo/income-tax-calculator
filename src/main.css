@@ -4,31 +4,47 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-.test {
-  @apply text-3xl font-bold underline;
-}
-
-._flex-xy-center {
-  @apply justify-center items-center;
-}
-
 @layer components {
   /* TYPOGRAPHY */
   .subtitle {
     @apply block text-sm font-bold;
   }
-
   .vertical-text {
     writing-mode: vertical-rl;
     @apply -rotate-180;
   }
+  /* PANELS, DRAWERS, LABELS */
+  .panel-result {
+    @apply flex flex-xy-center px-16 py-3 bg-green rounded-md shadow-md mr-3;
+  }
 
   /* BUTTONS */
-  .basic-button {
-    @apply flex _flex-xy-center w-full h-8 p-4 border border-gray rounded-md shadow-md;
+  .button-basic {
+    @apply flex flex-xy-center h-8 p-4 border border-gray rounded-md shadow-md;
+  }
+
+  .button-green {
+    @apply bg-green text-white;
   }
 
   .tab-button {
-    @apply flex _flex-xy-center h-48 w-10 p-4 font-bold text-base rounded-l-lg shadow-md;
+    @apply flex flex-xy-center h-48 w-10 p-4 font-bold text-base rounded-l-lg shadow-md;
   }
+
+  /* COMPOSITES */
+  .button-basic-selected {
+    @apply .button-green;
+  }
+}
+
+@layer utilities {
+  .flex-xy-center {
+    @apply justify-center items-center;
+  }
+}
+
+/* Overrides and fixes */
+#income-table th,
+#income-table td {
+  @apply font-normal h-8;
 }
