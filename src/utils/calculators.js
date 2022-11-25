@@ -41,3 +41,24 @@ export const deriveTaxFromNet = (netAmount, index, trackedTax) => {
     return trackedTax;
   }
 };
+
+export const buildIncomeData = (annualAmounts, paymentFrequency) => {
+  let incomeData = [];
+  function IncomeFigures(period, gross, tax, net) {
+    this.period = period;
+    this.gross = gross;
+    this.tax = tax;
+    this.net = net;
+  }
+  paymentFrequency.forEach(item => {
+    incomeData.push(
+      new IncomeFigures(
+        item.period,
+        annualAmounts.gross / item.numberOfPayments,
+        annualAmounts.tax / item.numberOfPayments,
+        annualAmounts.net / item.numberOfPayments,
+      ),
+    );
+  });
+  return incomeData;
+};

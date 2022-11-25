@@ -4,10 +4,23 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
+@layer base {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    appearance: textfield;
+  }
+}
+
 @layer components {
   /* TYPOGRAPHY */
   .subtitle {
-    @apply block text-sm font-bold;
+    @apply block text-sm font-bold block mb-4;
   }
   .vertical-text {
     writing-mode: vertical-rl;
@@ -19,6 +32,13 @@
   }
 
   /* BUTTONS */
+  .tab-button {
+    @apply flex flex-xy-center h-48 w-10 p-4 font-bold text-base rounded-l-lg shadow-md;
+  }
+  .tab-button-active {
+    @apply bg-light-green;
+  }
+
   .button-basic {
     @apply flex flex-xy-center h-8 p-4 border border-gray rounded-md shadow-md;
   }
@@ -27,13 +47,13 @@
     @apply bg-green text-white;
   }
 
-  .tab-button {
-    @apply flex flex-xy-center h-48 w-10 p-4 font-bold text-base rounded-l-lg shadow-md;
+  .button-disabled {
+    @apply bg-dark-gray text-white;
   }
 
   /* COMPOSITES */
-  .button-basic-selected {
-    @apply .button-green;
+  .button-basic-active {
+    @apply button-green;
   }
 }
 
@@ -46,5 +66,5 @@
 /* Overrides and fixes */
 #income-table th,
 #income-table td {
-  @apply font-normal h-8;
+  @apply font-normal text-sm h-8 py-3;
 }
