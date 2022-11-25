@@ -9,16 +9,15 @@ export const TAX_BRACKETS_2023 = [
 ];
 
 export const PAYMENT_FREQUENCY_MAP = [
-  { period: 'weekly', numberOfPayments: 52 },
-  { period: 'forthnitely', numberOfPayments: 26 },
-  { period: 'monthly', numberOfPayments: 12 },
-  { period: 'annualy', numberOfPayments: 1 },
+  { period: 'Weekly', numberOfPayments: 52 },
+  { period: 'Forthnitely', numberOfPayments: 26 },
+  { period: 'Monthly', numberOfPayments: 12 },
+  { period: 'Annualy', numberOfPayments: 1 },
 ];
 
-// const INCOME_TYPE_MAP = {
-//   initial: null,
-//   gross: 'gross',
-//   net: 'net',
-// };
+export const INCOME_TYPE_ENUM = {
+  gross: 'Gross Income',
+  net: 'Net Income',
+};
 
 export const TAB_LIST_MAP = [{ text: 'Income Details' }, { text: 'Income' }];

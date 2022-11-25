@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { formatter } from '../../utils/formatter';
 import TypographyBase from '../markups/TypographyBase';
 
-export default function InputAmount() {
+export default function AmountInput() {
+  const [amount, setAmount] = useState('');
+  const handleOnChange = event => setAmount(event.target.value);
+  //maskingINPUT
   return (
-    <div>
+    <div className="mb-6">
       <TypographyBase element="h2" className="subtitle">
         What is your total income?
       </TypographyBase>
@@ -32,9 +36,11 @@ export default function InputAmount() {
         </div>
 
         <input
-          type="text"
+          type="number"
           name="income"
           id="income"
+          onChange={handleOnChange}
+          value={amount}
           className="
             block 
             w-full h-8 
@@ -42,6 +48,7 @@ export default function InputAmount() {
             pl-7 pr-12 
             rounded-md 
             bg-transparent 
+            appearance-none
             focus:border-3 focus:border-light-green 
             focus:ring-light-green focus:ring-1
             placeholder:text-light-gray
@@ -49,7 +56,7 @@ export default function InputAmount() {
           placeholder="eg 12,000"
         />
         {/* USE BUTTON INSTEAD */}
-        <div
+        {/* <div
           className="
             absolute 
             inset-y-0 right-0 
@@ -77,7 +84,7 @@ export default function InputAmount() {
             <option>Monthly</option>
             <option>Annualy</option>
           </select>
-        </div>
+        </div> */}
         {/* USE BUTTON INSTEAD */}
       </div>
     </div>
