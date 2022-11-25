@@ -20,3 +20,5 @@ export const PAYMENT_FREQUENCY_MAP = [
 //   gross: 'gross',
 //   net: 'net',
 // };
+
+export const TAB_LIST_MAP = [{ text: 'Income Details' }, { text: 'Income' }];

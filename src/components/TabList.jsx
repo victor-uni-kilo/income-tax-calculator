@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ButtonBase from '@components/markups/ButtonBase';
 import TypographyBase from '@components/markups/TypographyBase';
 
-const TabList = () => {
+const TabList = ({ tabs, handleTabClick, currentTab }) => {
   return (
     <div className="flex flex-col text-sm font-medium text-center text-gray-500">
-      <ButtonBase className="tab-button">
-        <TypographyBase className="vertical-text">Income Details</TypographyBase>
-      </ButtonBase>
-      <ButtonBase className="tab-button">
-        <TypographyBase className="vertical-text">Income</TypographyBase>
-      </ButtonBase>
+      {tabs &&
+        tabs.map((item, index) => {
+          const isCurrent = index === currentTab ? 'button-green' : '';
+          return (
+            <ButtonBase
+              key={`tab-${index}`}
+              className={`tab-button ${isCurrent}`}
+              onClick={() => handleTabClick(index)}
+            >
+              <TypographyBase className="vertical-text">{item.text}</TypographyBase>
+            </ButtonBase>
+          );
+        })}
     </div>
   );
 };
