@@ -12,6 +12,23 @@
   @apply justify-center items-center;
 }
 
-._vertical-rl {
-  writing-mode: vertical-rl;
+@layer components {
+  /* TYPOGRAPHY */
+  .subtitle {
+    @apply block text-sm font-bold;
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    @apply -rotate-180;
+  }
+
+  /* BUTTONS */
+  .basic-button {
+    @apply flex _flex-xy-center w-full h-8 p-4 border border-gray rounded-md shadow-md;
+  }
+
+  .tab-button {
+    @apply flex _flex-xy-center h-48 w-10 p-4 font-bold text-base rounded-l-lg shadow-md;
+  }
 }

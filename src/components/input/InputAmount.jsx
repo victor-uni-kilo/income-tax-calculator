@@ -1,17 +1,14 @@
 import React from 'react';
+import TypographyBase from '../markups/TypographyBase';
 
 export default function InputAmount() {
   return (
     <div>
-      <label
-        htmlFor="income"
-        className="
-          block 
-          text-sm 
-          font-bold 
-          text-gray-700
-        "
-      >
+      <TypographyBase element="h2" className="subtitle">
+        What is your total income?
+      </TypographyBase>
+
+      <label htmlFor="income" className="sr-only">
         What is your total income?
       </label>
       <div
@@ -51,7 +48,7 @@ export default function InputAmount() {
           "
           placeholder="eg 12,000"
         />
-
+        {/* USE BUTTON INSTEAD */}
         <div
           className="
             absolute 
@@ -81,6 +78,7 @@ export default function InputAmount() {
             <option>Annualy</option>
           </select>
         </div>
+        {/* USE BUTTON INSTEAD */}
       </div>
     </div>
   );
