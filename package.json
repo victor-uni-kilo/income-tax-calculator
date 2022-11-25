@@ -12,6 +12,7 @@
   "author": "victor-uni-kilo <victor-uni-kilo@protonmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

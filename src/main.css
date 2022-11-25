@@ -2,7 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 .test {
   @apply text-3xl font-bold underline;
+}
+
+._flex-xy-center {
+  @apply justify-center items-center;
+}
+
+._vertical-rl {
+  writing-mode: vertical-rl;
 }
