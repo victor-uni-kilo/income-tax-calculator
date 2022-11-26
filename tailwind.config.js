@@ -9,7 +9,8 @@ module.exports = {
       xl: '1440px',
     },
     colors: {
-      transparent: 'transparent',
+      'transparent': 'transparent',
+      'black': '#404040',
       'white': '#ffffff',
       'green': '#34c249',
       'light-green': '#c0edc8',
@@ -21,10 +22,9 @@ module.exports = {
       'dark-gray': '#aaa8aa',
     },
     fontFamily: {
-      sans: ['Nunito', 'sans-serif'],
+      sans: ['Nunito Sans', 'sans-serif'],
     },
     extend: {},
-
   },
   plugins: [
     // ...

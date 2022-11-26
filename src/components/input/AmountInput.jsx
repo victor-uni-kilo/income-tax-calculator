@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import TypographyBase from '../markups/TypographyBase';
+import React from 'react';
+
+import Subtitle from '../typography/Subtitle';
 
 class AmountInput extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class AmountInput extends React.Component {
     this.state = {
       amount: '',
     };
+    console.log('this.props', this.props);
   }
 
   handleOnChange = event => {
@@ -16,9 +18,7 @@ class AmountInput extends React.Component {
   render() {
     return (
       <div className="mb-6">
-        <TypographyBase element="h2" className="subtitle">
-          What is your total income?
-        </TypographyBase>
+        <Subtitle>What is your total income?</Subtitle>
 
         <label htmlFor="income" className="sr-only">
           What is your total income?
@@ -42,7 +42,6 @@ class AmountInput extends React.Component {
           >
             <span>$</span>
           </div>
-
           <input
             type="number"
             name="income"

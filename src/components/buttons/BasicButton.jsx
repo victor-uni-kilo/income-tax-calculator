@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import ButtonBase from '@components/markups/ButtonBase';
-import TypographyBase from '@components/markups/TypographyBase';
+import ButtonBase from '@components/abstracts/ButtonBase';
+import TypographyBase from '@components/abstracts/TypographyBase';
 
 const BasicButton = ({
   onClick,
@@ -14,7 +15,7 @@ const BasicButton = ({
     <ButtonBase
       className={`button-basic w-full 
         ${isActive ? 'button-basic-active' : ''} 
-        ${isDisabled ? 'button-disabled' : 'button-basic-active'}
+        ${isDisabled ? 'button-disabled' : ''}
         ${addedClassNames}`}
       onClick={onClick}
       disabled={isDisabled}
@@ -22,6 +23,14 @@ const BasicButton = ({
       <TypographyBase className="font-bold text-sm">{innerText}</TypographyBase>
     </ButtonBase>
   );
+};
+
+BasicButton.propTypes = {
+  onClick: PropTypes.func,
+  innerText: PropTypes.string,
+  addedClassNames: PropTypes.string,
+  isActive: PropTypes.boolean,
+  isDisabled: PropTypes.boolean,
 };
 
 export default BasicButton;

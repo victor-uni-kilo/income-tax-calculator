@@ -1,27 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ButtonBase from './markups/ButtonBase';
-import TypographyBase from './markups/TypographyBase';
+import TypographyBase from './abstracts/TypographyBase';
 import IncomeTable from '@components/IncomeTable';
-
-import { formatter } from '../utils/formatter';
+import ResultTag from '@components/ResultTag';
 import BasicButton from './buttons/BasicButton';
 
-const IncomeResults = ({ incomeData }) => {
+import { CalculatorContext } from '../App';
+
+const IncomeResults = () => {
+  const { incomeDataState } = React.useContext(CalculatorContext);
+  const [incomeData] = incomeDataState;
+
   return (
     <div>
       <section className="mb-4 p-6 rounded-md bg-light-green">
+        {/* make this into a whole */}
         <div className="flex items-center mb-6">
-          <div className="panel-result">
-            <TypographyBase element="h2" className="font-bold text-lg">
-              {incomeData && formatter.format(incomeData[0].net)}
-            </TypographyBase>
-          </div>
-          <div>
-            <TypographyBase className="font-bold text-md">{`your net $monthly - income`}</TypographyBase>
-          </div>
+          <ResultTag result={incomeData[0].net} />
+          <TypographyBase className="font-bold text-md">{`your net $monthly - income`}</TypographyBase>
         </div>
+        {/* make this into a whole */}
         <IncomeTable incomeData={incomeData} />
       </section>
 
@@ -37,7 +36,7 @@ const IncomeResults = ({ incomeData }) => {
 };
 
 IncomeResults.propTypes = {
-  annualFigures: PropTypes.object,
+  incomeData: PropTypes.object,
 };
 
 export default IncomeResults;

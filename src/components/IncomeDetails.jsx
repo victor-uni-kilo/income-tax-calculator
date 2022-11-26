@@ -1,42 +1,74 @@
 import React, { useRef, useState } from 'react';
 
-import AmountInput from './input/AmountInput';
 import BasicButton from '@components/buttons/BasicButton';
-import TypographyBase from './markups/TypographyBase';
+import Subtitle from '@components/typography/Subtitle';
+import AmountInput from './input/AmountInput';
 
-import { IncomeTypeEnum } from '@constants';
+import { IncomeTypeEnum, PAYMENT_FREQUENCY_MAP } from '@constants';
+import { deriveTaxFromGross, deriveTaxFromNet, buildIncomeData } from '@utils/calculators';
+import { CalculatorContext } from '../App';
 
-const IncomeDetails = ({ amountType, handleCalculateTax, handleTypeToggle }) => {
+const IncomeDetails = () => {
+  const { incomeDataState, currentTabState } = React.useContext(CalculatorContext);
+  const [, setIncomeData] = incomeDataState;
+  const [, setCurrentTab] = currentTabState;
+
   const amountInputRef = useRef(null);
+  const [amountType, setAmountType] = useState(null);
+  const isActive = amountType !== null;
 
+  const handleTypeToggle = type => {
+    setAmountType(type);
+  };
+
+  const handleCalculateTax = inputAmountRef => {
+    const incomeAmount = parseInt(inputAmountRef.current.state.amount);
+    if (incomeAmount) {
+      const isGross = amountType === 'GROSS';
+      const annualFigures = {};
+      annualFigures.tax = isGross
+        ? deriveTaxFromGross(incomeAmount)
+        : deriveTaxFromNet(incomeAmount);
+      annualFigures.gross = isGross ? incomeAmount : incomeAmount + annualFigures.tax;
+      annualFigures.net = isGross ? incomeAmount - annualFigures.tax : incomeAmount;
+
+      setIncomeData(buildIncomeData(annualFigures, PAYMENT_FREQUENCY_MAP));
+      setCurrentTab(1);
+    } else {
+      alert('Please input income amount.');
+    }
+  };
+
+  console.log('amountType', amountType);
   return (
     <div className="w-1/2">
-      <AmountInput ref={amountInputRef} />
-      <div>
-        <TypographyBase element="h2" className="subtitle">
-          Please choose the income type
-        </TypographyBase>
-        <div className="flex gap-3 mb-6">
-          {IncomeTypeEnum &&
-            Object.keys(IncomeTypeEnum).map(type => {
-              return (
-                <BasicButton
-                  key={type}
-                  onClick={() => handleTypeToggle(type)}
-                  innerText={IncomeTypeEnum[type]}
-                  isActive={amountType === type}
-                />
-              );
-            })}
-        </div>
+      <section>
+        <AmountInput ref={amountInputRef} />
         <div>
-          <BasicButton
-            onClick={() => handleCalculateTax(amountInputRef)}
-            innerText="Calculate &rarr;"
-            isDisabled={amountType === null}
-          />
+          <Subtitle>Please choose the income type</Subtitle>
+          <div className="flex gap-3 mb-6">
+            {IncomeTypeEnum &&
+              Object.keys(IncomeTypeEnum).map(type => {
+                return (
+                  <BasicButton
+                    key={type}
+                    onClick={() => handleTypeToggle(type)}
+                    innerText={IncomeTypeEnum[type]}
+                    isActive={amountType === type}
+                  />
+                );
+              })}
+          </div>
+          <div>
+            <BasicButton
+              onClick={() => handleCalculateTax(amountInputRef)}
+              innerText="Calculate &rarr;"
+              isActive={isActive}
+              isDisabled={!isActive}
+            />
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
