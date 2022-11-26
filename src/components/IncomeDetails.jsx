@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 
 import AmountInput from './input/AmountInput';
-import ButtonBase from './markups/ButtonBase';
+import BasicButton from '@components/buttons/BasicButton';
 import TypographyBase from './markups/TypographyBase';
 
-import { INCOME_TYPE_ENUM } from '@constants';
+import { IncomeTypeEnum } from '@constants';
 
 const IncomeDetails = ({ amountType, handleCalculateTax, handleTypeToggle }) => {
   const amountInputRef = useRef(null);
@@ -17,32 +17,24 @@ const IncomeDetails = ({ amountType, handleCalculateTax, handleTypeToggle }) => 
           Please choose the income type
         </TypographyBase>
         <div className="flex gap-3 mb-6">
-          {INCOME_TYPE_ENUM &&
-            Object.keys(INCOME_TYPE_ENUM).map(type => {
-              const isActive = amountType === type ? 'button-basic-active' : '';
+          {IncomeTypeEnum &&
+            Object.keys(IncomeTypeEnum).map(type => {
               return (
-                <ButtonBase
+                <BasicButton
                   key={type}
-                  className={`button-basic w-full ${isActive}`}
                   onClick={() => handleTypeToggle(type)}
-                >
-                  <TypographyBase className="font-bold text-sm">
-                    {INCOME_TYPE_ENUM[type]}
-                  </TypographyBase>
-                </ButtonBase>
+                  innerText={IncomeTypeEnum[type]}
+                  isActive={amountType === type}
+                />
               );
             })}
         </div>
         <div>
-          <ButtonBase
+          <BasicButton
             onClick={() => handleCalculateTax(amountInputRef)}
-            className={`button-basic w-full ${
-              amountType === null ? 'button-disabled' : 'button-basic-active'
-            }`}
-            disabled={amountType === null ? true : false}
-          >
-            <TypographyBase className="font-bold text-sm">Calculate &rarr;</TypographyBase>
-          </ButtonBase>
+            innerText="Calculate &rarr;"
+            isDisabled={amountType === null}
+          />
         </div>
       </div>
     </div>

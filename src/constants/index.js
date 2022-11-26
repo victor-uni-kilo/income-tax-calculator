@@ -15,9 +15,9 @@ export const PAYMENT_FREQUENCY_MAP = [
   { period: 'Annualy', numberOfPayments: 1 },
 ];
 
-export const INCOME_TYPE_ENUM = {
-  gross: 'Gross Income',
-  net: 'Net Income',
-};
+export const TAB_LIST_MAP = [{ tabText: 'Income Details' }, { tabText: 'Income' }];
 
-export const TAB_LIST_MAP = [{ text: 'Income Details' }, { text: 'Income' }];
+export const IncomeTypeEnum = Object.freeze({
+  GROSS: 'Gross Income',
+  NET: 'Net Income',
+});
