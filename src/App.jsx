@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import TabList from '@components/TabList';
 import Header from '@components/Header';
@@ -35,6 +35,7 @@ const App = () => {
 
   return (
     <div className="h-screen w-screen flex justify-center items-center">
+      {/* <CalculatorContext.Provider value="#"> */}
       <div className="flex h-4/6 w-6/12">
         <TabList tabs={TAB_LIST_MAP} currentTab={currentTab} handleTabClick={handleTabClick} />
         <div className="bg-white-100 p-6 w-full shadow-md rounded-lg">
@@ -50,6 +51,7 @@ const App = () => {
           )}
         </div>
       </div>
+      {/* </CalculatorContext.Provider> */}
     </div>
   );
 };

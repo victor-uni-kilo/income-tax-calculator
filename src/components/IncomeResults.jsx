@@ -6,6 +6,7 @@ import TypographyBase from './markups/TypographyBase';
 import IncomeTable from '@components/IncomeTable';
 
 import { formatter } from '../utils/formatter';
+import BasicButton from './buttons/BasicButton';
 
 const IncomeResults = ({ incomeData }) => {
   return (
@@ -29,9 +30,7 @@ const IncomeResults = ({ incomeData }) => {
         <TypographyBase element="h2" className="text-md">
           Compare lenders and get your finance
         </TypographyBase>
-        <ButtonBase className="button-basic button-green w-auto">
-          <TypographyBase className="font-bold text-sm">Apply now</TypographyBase>
-        </ButtonBase>
+        <BasicButton innerText="Apply now" addedClassNames="button-green w-auto" />
       </section>
     </div>
   );
