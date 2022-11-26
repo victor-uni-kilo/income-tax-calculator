@@ -3,8 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 
 @layer base {
+  html {
+    @apply text-black;
+  }
+
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     appearance: none;
@@ -25,6 +30,9 @@
   .vertical-text {
     writing-mode: vertical-rl;
     @apply -rotate-180;
+  }
+  .underline-text {
+    @apply underline underline-offset-4 decoration-2 decoration-green;
   }
   /* PANELS, DRAWERS, LABELS */
   .panel-result {

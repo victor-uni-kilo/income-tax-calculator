@@ -56,8 +56,8 @@ export const buildIncomeData = (annualAmounts, paymentFrequency) => {
         item.period,
         annualAmounts.gross / item.numberOfPayments,
         annualAmounts.tax / item.numberOfPayments,
-        annualAmounts.net / item.numberOfPayments,
-      ),
+        annualAmounts.net / item.numberOfPayments
+      )
     );
   });
   return incomeData;

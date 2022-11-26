@@ -1,5 +1,5 @@
 import React from 'react';
-import { PAYMENT_FREQUENCY_MAP } from '@constants';
+import PropTypes from 'prop-types';
 
 import { formatter } from '../utils/formatter';
 
@@ -31,6 +31,10 @@ const IncomeTable = ({ incomeData }) => {
       </table>
     </div>
   );
+};
+
+IncomeTable.propTypes = {
+  incomeData: PropTypes.array,
 };
 
 export default IncomeTable;

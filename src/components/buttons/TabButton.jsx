@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import ButtonBase from '@components/markups/ButtonBase';
-import TypographyBase from '@components/markups/TypographyBase';
+import ButtonBase from '@components/abstracts/ButtonBase';
+import TypographyBase from '@components/abstracts/TypographyBase';
 
 const TabButton = ({ onClick, innerText, isCurrent, isDisabled = false }) => {
   return (
@@ -9,6 +10,13 @@ const TabButton = ({ onClick, innerText, isCurrent, isDisabled = false }) => {
       <TypographyBase className="vertical-text">{innerText}</TypographyBase>
     </ButtonBase>
   );
+};
+
+TabButton.propTypes = {
+  onClick: PropTypes.func,
+  innerText: PropTypes.string,
+  isCurrent: PropTypes.boolean,
+  isDisabled: PropTypes.boolean,
 };
 
 export default TabButton;
