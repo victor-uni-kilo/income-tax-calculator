@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import ListBoxButton from '@components/buttons/ListBoxButton';
 import TypographyBase from '@components/abstracts/TypographyBase';
@@ -15,19 +16,18 @@ const DropdownButton = ({
   const handleOpenDropdown = () => {
     setIsOpen(!isOpen);
   };
-  console.log('selectedOption', selectedOption);
   const handleSelect = index => {
     selectCallback(index, optionMap);
     setIsOpen(false);
   };
 
-  console.log('inlineDropdown', inlineDropdown);
   return (
     <div className={inlineDropdown ? 'inline-dropdown' : 'embedded-dropdown'}>
       <ListBoxButton
         className={className}
         onClick={handleOpenDropdown}
         innerText={selectedOption.period}
+        inlineDropdown={inlineDropdown}
       />
       {isOpen && (
         <ul className="dropdown-list">
@@ -50,6 +50,14 @@ const DropdownButton = ({
       )}
     </div>
   );
+};
+
+DropdownButton.propTypes = {
+  className: PropTypes.string,
+  optionMap: PropTypes.array,
+  selectCallback: PropTypes.func,
+  selectedOption: PropTypes.object,
+  inlineDropdown: PropTypes.bool,
 };
 
 export default DropdownButton;

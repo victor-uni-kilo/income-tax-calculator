@@ -35,7 +35,7 @@ const App = () => {
       >
         <div className="flex h-4/6 w-6/12">
           <TabList tabs={TAB_LIST_MAP} currentTab={currentTab} handleTabClick={handleTabClick} />
-          <div className="bg-white-100 p-6 w-full shadow-lg rounded-lg">
+          <div className="flex flex-col justify-start bg-white-100 p-6 w-full shadow-lg rounded-lg">
             <Header />
             {currentTab === 0 ? <IncomeDetails /> : <IncomeResults incomeData={incomeData} />}
           </div>

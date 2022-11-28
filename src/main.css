@@ -101,5 +101,5 @@
 /* Overrides and fixes */
 #income-table th,
 #income-table td {
-  @apply font-normal h-8 py-3;
+  @apply text-xs font-normal h-8 py-3;
 }
