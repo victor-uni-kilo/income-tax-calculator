@@ -19,7 +19,6 @@ const AmountInput = React.forwardRef((props, ref) => {
     const cleanString = event.target.value.replace(/,/g, '');
     console.log('post', cleanString);
     setAmount(cleanString);
-
   };
 
   const selectCallback = (index, optionMap) => {
@@ -39,7 +38,7 @@ const AmountInput = React.forwardRef((props, ref) => {
           <span>$</span>
         </div>
         <input
-          type="number"
+          type="text"
           name="income"
           id="income"
           onChange={handleOnChange}
