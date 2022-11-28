@@ -5,6 +5,7 @@ import Header from '@components/Header';
 import IncomeDetails from '@components/IncomeDetails';
 import IncomeResults from '@components/IncomeResults';
 
+import { PAYMENT_FREQUENCY_MAP } from 'constants';
 import { TAB_LIST_MAP } from '@constants';
 
 export const CalculatorContext = createContext(null);
@@ -14,6 +15,8 @@ const App = () => {
   const [currentTab, setCurrentTab] = useState(0);
   // CALCULATION STATES
   const [incomeData, setIncomeData] = useState(null);
+  const initFrequencyInput = PAYMENT_FREQUENCY_MAP.find(item => (item.period = 'Weekly'));
+  const [frequencyInput, setFrequencyInput] = useState(initFrequencyInput);
 
   const handleTabClick = index => {
     if (incomeData) {
@@ -27,11 +30,12 @@ const App = () => {
         value={{
           incomeDataState: [incomeData, setIncomeData],
           currentTabState: [currentTab, setCurrentTab],
+          frequencyInputState: [frequencyInput, setFrequencyInput],
         }}
       >
         <div className="flex h-4/6 w-6/12">
           <TabList tabs={TAB_LIST_MAP} currentTab={currentTab} handleTabClick={handleTabClick} />
-          <div className="bg-white-100 p-6 w-full shadow-md rounded-lg">
+          <div className="bg-white-100 p-6 w-full shadow-lg rounded-lg">
             <Header />
             {currentTab === 0 ? <IncomeDetails /> : <IncomeResults incomeData={incomeData} />}
           </div>

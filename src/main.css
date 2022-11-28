@@ -31,9 +31,7 @@
     writing-mode: vertical-rl;
     @apply -rotate-180;
   }
-  .underline-text {
-    @apply underline underline-offset-4 decoration-2 decoration-green;
-  }
+
   /* PANELS, DRAWERS, LABELS */
   .panel-result {
     @apply flex flex-xy-center px-16 py-3 bg-green rounded-md shadow-md mr-3;
@@ -59,6 +57,35 @@
     @apply bg-dark-gray text-white;
   }
 
+  .embedded-dropdown {
+    @apply absolute flex items-center inset-y-0 right-0 text-sm rounded-r-md bg-light-gray text-dark-gray;
+  }
+
+  .inline-dropdown {
+    @apply relative lowercase underline;
+  }
+  .button-as-text {
+    @apply lowercase underline;
+  }
+
+  .dropdown-list {
+    @apply absolute top-9 -left-1/2 w-28 text-xs font-normal p-1 rounded-sm bg-white border border-gray;
+  }
+
+  .dropdown-list > li {
+    @apply p-1 hover:bg-light-gray first:before:absolute;
+  }
+
+  .dropdown-list > li:first-child:before {
+    z-index: 1;
+    width: 12px;
+    height: 12px;
+    transform: translateY(12px) rotate(45deg);
+    @apply left-1/2 border-t border-l border-t-gray border-l-gray bg-white;
+    top: -19px;
+    margin-left: -6px;
+  }
+
   /* COMPOSITES */
   .button-basic-active {
     @apply button-green;
@@ -74,5 +101,5 @@
 /* Overrides and fixes */
 #income-table th,
 #income-table td {
-  @apply font-normal text-sm h-8 py-3;
+  @apply font-normal h-8 py-3;
 }

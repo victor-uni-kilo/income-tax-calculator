@@ -1,102 +1,56 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 
-import Subtitle from '../typography/Subtitle';
+import Subtitle from '@components/typography/Subtitle';
+import DropdownButton from '@components/buttons/DropdownButton';
 
-class AmountInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      amount: '',
-    };
-    console.log('this.props', this.props);
-  }
+import { CalculatorContext } from '../../App';
+import { PAYMENT_FREQUENCY_MAP } from 'constants';
 
-  handleOnChange = event => {
-    this.setState({ amount: event.target.value });
+const AmountInput = React.forwardRef((props, ref) => {
+  const [amount, setAmount] = useState('');
+  const { frequencyInputState } = React.useContext(CalculatorContext);
+  const [frequencyInput, setFrequencyInput] = frequencyInputState;
+
+  const handleOnChange = event => {
+    setAmount(event.target.value);
   };
-  //maskingINPUT
-  render() {
-    return (
-      <div className="mb-6">
-        <Subtitle>What is your total income?</Subtitle>
 
-        <label htmlFor="income" className="sr-only">
-          What is your total income?
-        </label>
-        <div
-          className="
-            relative 
-            h-8 
-            mt-1 
-            rounded-md
-          "
-        >
-          <div
-            className="
-              pointer-events-none 
-              absolute 
-              inset-y-0 left-0 
-              flex items-center 
-              pl-3
-            "
-          >
-            <span>$</span>
-          </div>
-          <input
-            type="number"
-            name="income"
-            id="income"
-            onChange={this.handleOnChange}
-            value={this.state.amount}
-            className="
-              block 
-              w-full h-8 
-              border-1 border-gray 
-              pl-7 pr-12 
-              rounded-md 
-              bg-transparent 
-              appearance-none
-              focus:border-3 focus:border-light-green 
-              focus:ring-light-green focus:ring-1
-              placeholder:text-light-gray
-            "
-            placeholder="eg 12,000"
-          />
-          {/* USE BUTTON INSTEAD */}
-          {/* <div
-            className="
-              absolute 
-              inset-y-0 right-0 
-              flex 
-              items-center
-            "
-          >
-            <label htmlFor="frequency" className="sr-only">
-              Frequency
-            </label>
-            <select
-              id="frequency"
-              name="frequency"
-              className="
-                h-full 
-                border-0 
-                py-0 pl-2 pr-7 
-                rounded-r-md 
-                text-dark-gray 
-                bg-light-gray
-              "
-            >
-              <option>Weekly</option>
-              <option>Forthnitely</option>
-              <option>Monthly</option>
-              <option>Annualy</option>
-            </select>
-          </div> */}
-          {/* USE BUTTON INSTEAD */}
+  const selectCallback = (index, optionMap) => {
+    setFrequencyInput(optionMap[index]);
+  };
+
+  //maskingINPUT
+  return (
+    <div className="mb-6">
+      <Subtitle>What is your total income?</Subtitle>
+
+      <label htmlFor="income" className="sr-only">
+        What is your total income?
+      </label>
+      <div className="relative h-8 mt-1 rounded-md">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <span>$</span>
         </div>
+        <input
+          type="number"
+          name="income"
+          id="income"
+          onChange={handleOnChange}
+          ref={ref}
+          value={amount}
+          className="block w-full h-8 border-1 border-gray pl-7 pr-12 rounded-md bg-transparent appearance-nonefocus:border-3 focus:border-light-green focus:ring-light-green focus:ring-1 placeholder:text-light-gray"
+          placeholder="eg 12,000"
+        />
+        <DropdownButton
+          optionMap={PAYMENT_FREQUENCY_MAP}
+          selectedOption={frequencyInput}
+          selectCallback={selectCallback}
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+});
+
+AmountInput.displayName = 'AmountInput';
 
 export default AmountInput;

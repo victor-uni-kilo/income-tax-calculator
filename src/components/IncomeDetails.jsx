@@ -9,9 +9,11 @@ import { deriveTaxFromGross, deriveTaxFromNet, buildIncomeData } from '@utils/ca
 import { CalculatorContext } from '../App';
 
 const IncomeDetails = () => {
-  const { incomeDataState, currentTabState } = React.useContext(CalculatorContext);
+  const { incomeDataState, currentTabState, frequencyInputState } =
+    React.useContext(CalculatorContext);
   const [, setIncomeData] = incomeDataState;
   const [, setCurrentTab] = currentTabState;
+  const [frequencyInput] = frequencyInputState;
 
   const amountInputRef = useRef(null);
   const [amountType, setAmountType] = useState(null);
@@ -21,8 +23,8 @@ const IncomeDetails = () => {
     setAmountType(type);
   };
 
-  const handleCalculateTax = inputAmountRef => {
-    const incomeAmount = parseInt(inputAmountRef.current.state.amount);
+  const handleCalculateTax = (inputAmountRef, frequencyInput) => {
+    const incomeAmount = parseInt(inputAmountRef.current.value) * frequencyInput.numberOfPayments;
     if (incomeAmount) {
       const isGross = amountType === 'GROSS';
       const annualFigures = {};
@@ -61,7 +63,7 @@ const IncomeDetails = () => {
           </div>
           <div>
             <BasicButton
-              onClick={() => handleCalculateTax(amountInputRef)}
+              onClick={() => handleCalculateTax(amountInputRef, frequencyInput)}
               innerText="Calculate &rarr;"
               isActive={isActive}
               isDisabled={!isActive}
