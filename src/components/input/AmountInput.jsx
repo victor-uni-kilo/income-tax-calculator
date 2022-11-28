@@ -6,13 +6,20 @@ import DropdownButton from '@components/buttons/DropdownButton';
 import { CalculatorContext } from '../../App';
 import { PAYMENT_FREQUENCY_MAP } from 'constants';
 
+import { localeFormatter } from '../../utils/formatter';
+
 const AmountInput = React.forwardRef((props, ref) => {
   const [amount, setAmount] = useState('');
-  const { frequencyInputState } = React.useContext(CalculatorContext);
+  const { frequencyInputState } = useContext(CalculatorContext);
   const [frequencyInput, setFrequencyInput] = frequencyInputState;
 
   const handleOnChange = event => {
-    setAmount(event.target.value);
+    console.log('pre', event.target.value);
+
+    const cleanString = event.target.value.replace(/,/g, '');
+    console.log('post', cleanString);
+    setAmount(cleanString);
+
   };
 
   const selectCallback = (index, optionMap) => {
@@ -37,7 +44,7 @@ const AmountInput = React.forwardRef((props, ref) => {
           id="income"
           onChange={handleOnChange}
           ref={ref}
-          value={amount}
+          value={amount && localeFormatter.format(amount)}
           className="block w-full h-8 border-1 border-gray pl-7 pr-12 rounded-md bg-transparent appearance-nonefocus:border-3 focus:border-light-green focus:ring-light-green focus:ring-1 placeholder:text-light-gray"
           placeholder="eg 12,000"
         />

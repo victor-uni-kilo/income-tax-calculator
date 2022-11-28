@@ -6,9 +6,7 @@ import { formatter } from '../utils/formatter';
 
 const ResultTag = ({ result, filter }) => {
   const displayResult = result.find(item => item.period === filter.period);
-  console.log('result', result);
-  console.log('filter', filter);
-  console.log('displayResult', displayResult);
+
   return (
     <div className="panel-result">
       <TypographyBase element="h2" className="font-bold text-lg">
@@ -20,6 +18,7 @@ const ResultTag = ({ result, filter }) => {
 
 ResultTag.propTypes = {
   result: PropTypes.array,
+  filter: PropTypes.object,
 };
 
 export default ResultTag;

@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+
+import React, { useRef, useState, useContext } from 'react';
+
 
 import BasicButton from '@components/buttons/BasicButton';
 import Subtitle from '@components/typography/Subtitle';
@@ -9,8 +11,8 @@ import { deriveTaxFromGross, deriveTaxFromNet, buildIncomeData } from '@utils/ca
 import { CalculatorContext } from '../App';
 
 const IncomeDetails = () => {
-  const { incomeDataState, currentTabState, frequencyInputState } =
-    React.useContext(CalculatorContext);
+  const { incomeDataState, currentTabState, frequencyInputState } = useContext(CalculatorContext);
+
   const [, setIncomeData] = incomeDataState;
   const [, setCurrentTab] = currentTabState;
   const [frequencyInput] = frequencyInputState;
@@ -24,7 +26,8 @@ const IncomeDetails = () => {
   };
 
   const handleCalculateTax = (inputAmountRef, frequencyInput) => {
-    const incomeAmount = parseInt(inputAmountRef.current.value) * frequencyInput.numberOfPayments;
+    const incomeAmount =
+      parseInt(inputAmountRef.current.value.replace(/,/g, '')) * frequencyInput.numberOfPayments;
     if (incomeAmount) {
       const isGross = amountType === 'GROSS';
       const annualFigures = {};
