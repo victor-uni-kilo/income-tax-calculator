@@ -1,5 +1,5 @@
-import React, { useRef, useState, useContext } from 'react';
 
+import React, { useRef, useState, useContext } from 'react';
 import BasicButton from '@components/buttons/BasicButton';
 import Subtitle from '@components/typography/Subtitle';
 import AmountInput from './input/AmountInput';

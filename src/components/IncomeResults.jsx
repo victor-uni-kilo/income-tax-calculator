@@ -29,7 +29,7 @@ const IncomeResults = () => {
         <div className="flex items-center mb-6">
           <ResultTag result={incomeData} filter={selectedOption} />
           <TypographyBase className="flex flex-xy-center font-bold text-md">
-            yout net
+            your net
             <DropdownButton
               optionMap={PAYMENT_FREQUENCY_MAP}
               selectedOption={selectedOption}

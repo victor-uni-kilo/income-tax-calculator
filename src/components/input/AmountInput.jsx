@@ -37,7 +37,7 @@ const AmountInput = React.forwardRef((props, ref) => {
           <span>$</span>
         </div>
         <input
-          type="text"
+          type="number"
           name="income"
           id="income"
           onChange={handleOnChange}
