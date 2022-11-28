@@ -29,8 +29,8 @@ BasicButton.propTypes = {
   onClick: PropTypes.func,
   innerText: PropTypes.string,
   addedClassNames: PropTypes.string,
-  isActive: PropTypes.boolean,
-  isDisabled: PropTypes.boolean,
+  isActive: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 export default BasicButton;

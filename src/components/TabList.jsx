@@ -8,13 +8,12 @@ const TabList = ({ tabs, handleTabClick, currentTab }) => {
     <div className="flex flex-col gap-2 text-sm font-medium text-center text-gray-500">
       {tabs &&
         tabs.map((tab, index) => {
-          const isCurrent = index === currentTab ? 'tab-button-active' : '';
           return (
             <TabButton
               key={`tab-${index}`}
               onClick={() => handleTabClick(index)}
               innerText={tab.tabText}
-              isCurrent={isCurrent}
+              isCurrent={currentTab === index}
               // disabled={isDisabled}
             />
           );

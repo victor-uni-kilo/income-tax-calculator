@@ -1,24 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import TypographyBase from './abstracts/TypographyBase';
+import TypographyBase from '@components/abstracts/TypographyBase';
+import ButtonBase from '@components/abstracts/ButtonBase';
 import IncomeTable from '@components/IncomeTable';
 import ResultTag from '@components/ResultTag';
-import BasicButton from './buttons/BasicButton';
+import BasicButton from '@components/buttons/BasicButton';
+import DropdownButton from '@components/buttons/DropdownButton';
 
 import { CalculatorContext } from '../App';
+import { PAYMENT_FREQUENCY_MAP } from 'constants';
 
 const IncomeResults = () => {
-  const { incomeDataState } = React.useContext(CalculatorContext);
+  const { incomeDataState, frequencyInputState } = React.useContext(CalculatorContext);
   const [incomeData] = incomeDataState;
+  const [frequencyInput, setFrequencyInput] = frequencyInputState;
+
+  const [selectedOption, setSelectedOption] = useState(frequencyInput);
+
+  const selectCallback = (index, optionMap) => {
+    setSelectedOption(optionMap[index]);
+  };
 
   return (
     <div>
       <section className="mb-4 p-6 rounded-md bg-light-green">
         {/* make this into a whole */}
         <div className="flex items-center mb-6">
-          <ResultTag result={incomeData[0].net} />
-          <TypographyBase className="font-bold text-md">{`your net $monthly - income`}</TypographyBase>
+          <ResultTag result={incomeData} filter={selectedOption} />
+          <TypographyBase className="flex flex-xy-center font-bold text-md">
+            yout net &nbsp;
+            <DropdownButton
+              optionMap={PAYMENT_FREQUENCY_MAP}
+              selectedOption={selectedOption}
+              selectCallback={selectCallback}
+              className="inline-dropdown"
+              inlineDropdown={true}
+            />
+            &nbsp; - income
+          </TypographyBase>
         </div>
         {/* make this into a whole */}
         <IncomeTable incomeData={incomeData} />
@@ -36,7 +56,7 @@ const IncomeResults = () => {
 };
 
 IncomeResults.propTypes = {
-  incomeData: PropTypes.object,
+  incomeData: PropTypes.array,
 };
 
 export default IncomeResults;
