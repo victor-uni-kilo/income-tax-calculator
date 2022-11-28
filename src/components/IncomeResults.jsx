@@ -1,13 +1,16 @@
+
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import TypographyBase from '@components/abstracts/TypographyBase';
+
 import IncomeTable from '@components/IncomeTable';
 import ResultTag from '@components/ResultTag';
 import BasicButton from '@components/buttons/BasicButton';
 import DropdownButton from '@components/buttons/DropdownButton';
 
 import illustration from '../svg/columns.svg';
+
 import { CalculatorContext } from '../App';
 import { PAYMENT_FREQUENCY_MAP } from 'constants';
 
@@ -29,7 +32,7 @@ const IncomeResults = () => {
         <div className="flex items-center mb-6">
           <ResultTag result={incomeData} filter={selectedOption} />
           <TypographyBase className="flex flex-xy-center font-bold text-md">
-            yout net
+            your net
             <DropdownButton
               optionMap={PAYMENT_FREQUENCY_MAP}
               selectedOption={selectedOption}
@@ -48,12 +51,14 @@ const IncomeResults = () => {
         <div className="w-auto h-16 pl-1">
           <img className="w-full h-full object-cover" src={illustration} alt="arrow-icon" />
         </div>
+
         <TypographyBase element="h2" className="text-md">
           Compare lenders and get your finance
         </TypographyBase>
         <BasicButton innerText="Apply now" addedClassNames="button-green w-auto" />
       </section>
     </>
+
   );
 };
 

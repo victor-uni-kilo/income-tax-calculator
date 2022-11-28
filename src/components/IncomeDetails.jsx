@@ -1,4 +1,6 @@
+
 import React, { useRef, useState, useContext } from 'react';
+
 
 import BasicButton from '@components/buttons/BasicButton';
 import Subtitle from '@components/typography/Subtitle';
@@ -10,6 +12,7 @@ import { CalculatorContext } from '../App';
 
 const IncomeDetails = () => {
   const { incomeDataState, currentTabState, frequencyInputState } = useContext(CalculatorContext);
+
   const [, setIncomeData] = incomeDataState;
   const [, setCurrentTab] = currentTabState;
   const [frequencyInput] = frequencyInputState;

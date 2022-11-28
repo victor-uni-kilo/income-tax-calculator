@@ -5,6 +5,7 @@ import DropdownButton from '@components/buttons/DropdownButton';
 
 import { CalculatorContext } from '../../App';
 import { PAYMENT_FREQUENCY_MAP } from 'constants';
+
 import { localeFormatter } from '../../utils/formatter';
 
 const AmountInput = React.forwardRef((props, ref) => {
@@ -18,6 +19,7 @@ const AmountInput = React.forwardRef((props, ref) => {
     const cleanString = event.target.value.replace(/,/g, '');
     console.log('post', cleanString);
     setAmount(cleanString);
+
   };
 
   const selectCallback = (index, optionMap) => {
@@ -37,7 +39,7 @@ const AmountInput = React.forwardRef((props, ref) => {
           <span>$</span>
         </div>
         <input
-          type="text"
+          type="number"
           name="income"
           id="income"
           onChange={handleOnChange}

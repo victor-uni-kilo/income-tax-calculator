@@ -16,6 +16,7 @@ const DropdownButton = ({
   const handleOpenDropdown = () => {
     setIsOpen(!isOpen);
   };
+
   const handleSelect = index => {
     selectCallback(index, optionMap);
     setIsOpen(false);
