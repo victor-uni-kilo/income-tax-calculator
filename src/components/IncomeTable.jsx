@@ -19,7 +19,7 @@ const IncomeTable = ({ incomeData }) => {
           {incomeData &&
             incomeData.map((item, index) => {
               return (
-                <tr key={`row-${index}`} className="border-b border-gray">
+                <tr key={`row-${index}`} className="border-b border-gray last:border-none">
                   <td>{item.period}</td>
                   <td>{formatter.format(item.gross)}</td>
                   <td>{formatter.format(item.tax)}</td>

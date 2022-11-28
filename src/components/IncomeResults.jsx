@@ -1,10 +1,10 @@
-
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import TypographyBase from '@components/abstracts/TypographyBase';
 
 import IncomeTable from '@components/IncomeTable';
+import Image from '@components/abstracts/Image';
 import ResultTag from '@components/ResultTag';
 import BasicButton from '@components/buttons/BasicButton';
 import DropdownButton from '@components/buttons/DropdownButton';
@@ -47,18 +47,14 @@ const IncomeResults = () => {
         <IncomeTable incomeData={incomeData} />
       </section>
 
-      <section className="flex justify-between h-32 items-center p-6 rounded-md bg-light-yellow border-r-2 border-dark-yellow">
-        <div className="w-auto h-16 pl-1">
-          <img className="w-full h-full object-cover" src={illustration} alt="arrow-icon" />
-        </div>
-
+      <section className="flex justify-between h-full items-center p-6 rounded-md bg-light-yellow border-r-2 border-dark-yellow">
+        <Image src={illustration} alt="banking-icon" className="w-auto h-16" />
         <TypographyBase element="h2" className="text-md">
           Compare lenders and get your finance
         </TypographyBase>
         <BasicButton innerText="Apply now" addedClassNames="button-green w-auto" />
       </section>
     </>
-
   );
 };
 

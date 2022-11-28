@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import arrow from '../../svg/arrow.svg';
 
-
+import Image from '@components/abstracts/Image';
 import ButtonBase from '@components/abstracts/ButtonBase';
 import TypographyBase from '@components/abstracts/TypographyBase';
-
 
 const ListBoxButton = ({ className, onClick, innerText, inlineDropdown }) => {
   return (
@@ -14,14 +13,10 @@ const ListBoxButton = ({ className, onClick, innerText, inlineDropdown }) => {
       onClick={onClick}
       role="listbox"
     >
-      <TypographyBase className={!inlineDropdown ? 'text-dark-gray' : ''}>
+      <TypographyBase className={!inlineDropdown ? 'text-dark-gray' : 'font-normal'}>
         {innerText}
       </TypographyBase>
-      {!inlineDropdown && (
-        <div className="w-auto h-2 pl-1">
-          <img className="w-full h-full object-cover" src={arrow} alt="arrow-icon" />
-        </div>
-      )}
+      {!inlineDropdown && <Image src={arrow} alt="arrow-icon" className="w-auto h-2" />}
     </ButtonBase>
   );
 };

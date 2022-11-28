@@ -14,7 +14,6 @@ const TabList = ({ tabs, handleTabClick, currentTab }) => {
               onClick={() => handleTabClick(index)}
               innerText={tab.tabText}
               isCurrent={currentTab === index}
-              // disabled={isDisabled}
             />
           );
         })}

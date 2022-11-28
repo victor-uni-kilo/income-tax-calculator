@@ -13,14 +13,13 @@ const BasicButton = ({
 }) => {
   return (
     <ButtonBase
-      className={`button-basic w-full 
-        ${isActive ? 'button-basic-active' : ''} 
-        ${isDisabled ? 'button-disabled' : ''}
-        ${addedClassNames}`}
+      className={`button-basic w-full ${addedClassNames} ${isActive ? 'button-basic-active' : ''} ${
+        isDisabled ? 'button-disabled' : ''
+      } `}
       onClick={onClick}
       disabled={isDisabled}
     >
-      <TypographyBase className="font-bold text-sm">{innerText}</TypographyBase>
+      <TypographyBase>{innerText}</TypographyBase>
     </ButtonBase>
   );
 };

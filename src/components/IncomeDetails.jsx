@@ -1,6 +1,4 @@
-
 import React, { useRef, useState, useContext } from 'react';
-
 
 import BasicButton from '@components/buttons/BasicButton';
 import Subtitle from '@components/typography/Subtitle';
@@ -60,6 +58,7 @@ const IncomeDetails = () => {
                     onClick={() => handleTypeToggle(type)}
                     innerText={IncomeTypeEnum[type]}
                     isActive={amountType === type}
+                    addedClassNames="font-bold"
                   />
                 );
               })}

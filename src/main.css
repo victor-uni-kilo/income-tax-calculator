@@ -50,7 +50,11 @@
   }
 
   .button-green {
-    @apply bg-green text-white;
+    @apply bg-green font-bold text-white;
+  }
+
+  .button-light {
+    @apply bg-white text-green text-xs;
   }
 
   .button-disabled {
@@ -63,9 +67,6 @@
 
   .inline-dropdown {
     @apply relative lowercase underline;
-  }
-  .button-as-text {
-    @apply lowercase underline;
   }
 
   .dropdown-list {
